@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Practika2Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="District2">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name1" Type="varchar" MaxLength="100" />
+          <Property Name="House_id" Type="int" />
+        </EntityType>
+        <EntityType Name="houses2">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name1" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK__District2__House__4E88ABD4">
+          <End Role="houses2" Type="Self.houses2" Multiplicity="0..1" />
+          <End Role="District2" Type="Self.District2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="houses2">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="District2">
+              <PropertyRef Name="House_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище Practika2ModelContainer">
+          <EntitySet Name="District2" EntityType="Self.District2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="houses2" EntityType="Self.houses2" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__District2__House__4E88ABD4" Association="Self.FK__District2__House__4E88ABD4">
+            <End Role="houses2" EntitySet="houses2" />
+            <End Role="District2" EntitySet="District2" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Practika2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="District2">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="House_id" Type="Int32" />
+          <NavigationProperty Name="houses2" Relationship="Self.FK__District2__House__4E88ABD4" FromRole="District2" ToRole="houses2" />
+        </EntityType>
+        <EntityType Name="houses2">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="District2" Relationship="Self.FK__District2__House__4E88ABD4" FromRole="houses2" ToRole="District2" />
+        </EntityType>
+        <Association Name="FK__District2__House__4E88ABD4">
+          <End Role="houses2" Type="Self.houses2" Multiplicity="0..1" />
+          <End Role="District2" Type="Self.District2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="houses2">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="District2">
+              <PropertyRef Name="House_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Practika2Entities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="District2" EntityType="Self.District2" />
+          <EntitySet Name="houses2" EntityType="Self.houses2" />
+          <AssociationSet Name="FK__District2__House__4E88ABD4" Association="Self.FK__District2__House__4E88ABD4">
+            <End Role="houses2" EntitySet="houses2" />
+            <End Role="District2" EntitySet="District2" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Practika2ModelContainer" CdmEntityContainer="Practika2Entities3">
+          <EntitySetMapping Name="District2">
+            <EntityTypeMapping TypeName="Practika2Model.District2">
+              <MappingFragment StoreEntitySet="District2">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name1" ColumnName="Name1" />
+                <ScalarProperty Name="House_id" ColumnName="House_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="houses2">
+            <EntityTypeMapping TypeName="Practika2Model.houses2">
+              <MappingFragment StoreEntitySet="houses2">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name1" ColumnName="Name1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
